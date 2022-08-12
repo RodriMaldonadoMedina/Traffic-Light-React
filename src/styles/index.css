@@ -10,3 +10,46 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+body{
+    background-image: url("https://images.pexels.com/photos/7674/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.caja{
+    width: 320px;
+    height: 110px;
+    margin-top: 6rem;
+    border-radius: 25px;
+    background-color: black;
+}
+
+.brilla{
+    box-shadow: 0 0 20px white;
+}
+
+.rojo{
+    
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.amarillo{
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    border-radius: 50%;
+    background-color: yellow;
+}
+
+.verde{
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    border-radius: 50%;
+    background-color: green;
+}
