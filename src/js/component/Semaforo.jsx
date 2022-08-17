@@ -5,8 +5,9 @@ const Semaforo = () => {
   const [color, setColor] = useState("");
   const [encendido, setEncendido] = useState(false);
   const colores = ["rojo", "amarillo", "verde"];
-  const [intervalo, setIntervalo] = useState(0);
-  const [intervalo2, setIntervalo2] = useState(0);
+  
+  const [intervalo, setIntervalo] = useState(null);
+  const [aux, setAux] = useState(0);
 
   const cambiarLuzRoja = () => {
     setColor("rojo");
@@ -23,6 +24,7 @@ const Semaforo = () => {
   const stopInterval = () => {
     clearInterval(intervalo);
     setIntervalo(null);
+    console.log("parando intervalo 1")
   };
 
   //funcion que me implementa la clase brilla en cualquier luz
@@ -70,37 +72,20 @@ const Semaforo = () => {
     } else setEncendido(false);
   };
 
-  const functionIntervalo2 = () => {
-    if (!intervalo2) {
-      let index = 0;
-      let newIntervalo2 = setInterval(() => {
-        console.log("dentro de intervalo2");
-        if (index < colores.length) {
-          setColor(colores[index]);
-          index++;
-        }
-      }, 1000);
-      setIntervalo2(newIntervalo2);
-    }
-	else{
-		console.log(intervalo2);
-		clearInterval(intervalo2);
-		setIntervalo2(null);
-	}
-  };
-
   useEffect(() => {
-    if (!intervalo) {
-      console.log("dentro de intervalo1");
-      let newIntervalo = setInterval(() => {
-        functionIntervalo2();
-        //let aleatorio = colores[Math.floor(Math.random()* colores.length)];
-        //enOrden();
-        //console.log(aleatorio);
-        //setColor(aleatorio);
-      }, 3000);
-      setIntervalo(newIntervalo);
-    } else stopInterval();
+    if(aux !== 0)
+      if (!intervalo) {
+        let index = 0;
+        let newIntervalo = setInterval(() => {
+          if (index < colores.length) {
+            setColor(colores[index]);
+            index++;
+          }
+          else index = 0;
+        }, 1000);
+        setIntervalo(newIntervalo);
+      } else stopInterval();
+    else setAux(1);
   }, [encendido]);
 
   return (
