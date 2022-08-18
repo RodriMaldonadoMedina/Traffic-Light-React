@@ -13,6 +13,14 @@ body{
     background-color: black;
 }
 
+.cajaMorado{
+    width: 425px;
+    height: 110px;
+    margin-top: 6rem;
+    border-radius: 25px;
+    background-color: black;
+}
+
 .brilla{
     box-shadow: 0 0 20px white;
 }
@@ -39,4 +47,12 @@ body{
     margin: 5px;
     border-radius: 50%;
     background-color: green;
+}
+
+.morado{
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    border-radius: 50%;
+    background-color: purple;
 }

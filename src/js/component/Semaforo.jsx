@@ -33,6 +33,12 @@ const Semaforo = () => {
     else setColor("");
   };
 
+  const cambiarLuzMorado = () => {
+    if(color !== "morado")
+      setColor("morado")
+    else setColor("");
+  }
+
   //funcion que para el setInterval con el numero de intervalo
   const stopInterval = () => {
     clearInterval(intervalo);
@@ -57,6 +63,7 @@ const Semaforo = () => {
     if(aux !== 0)
       if (!intervalo) {
         let index = 0;
+        console.log(colores)
         let newIntervalo = setInterval(() => {
           if (index < colores.length) {
             setColor(colores[index]);
@@ -72,28 +79,49 @@ const Semaforo = () => {
 
   const agregarLuzMorada = ()=>{
     if (!mostrarMorado){
-
-    }else setMostrarMorado(true);
+      colores.push["morado"];
+      //setEncendido(true);
+      setMostrarMorado(true);
+    }else setMostrarMorado(false);
   }
-
+  
   return (
     <div className="container">
-      <div className="caja d-flex mt-5">
-        <div
-          className={"rojo" + setBrillo("rojo")}
-          onClick={cambiarLuzRoja}
-        ></div>
-        <div
-          className={"amarillo" + setBrillo("amarillo")}
-          onClick={cambiarLuzAmarilla}
-        ></div>
-        <div
-          className={"verde" + setBrillo("verde")}
-          onClick={cambiarLuzVerde}
-        ></div>
-      </div>
+      { !mostrarMorado ? (<div className="caja d-flex mt-5">
+          <div
+            className={"rojo" + setBrillo("rojo")}
+            onClick={cambiarLuzRoja}
+          ></div>
+          <div
+            className={"amarillo" + setBrillo("amarillo")}
+            onClick={cambiarLuzAmarilla}
+          ></div>
+          <div
+            className={"verde" + setBrillo("verde")}
+            onClick={cambiarLuzVerde}
+          ></div>
+        </div>) : ( 
+        <div className="cajaMorado d-flex mt-5">
+          <div
+            className={"rojo" + setBrillo("rojo")}
+            onClick={cambiarLuzRoja}
+          ></div>
+          <div
+            className={"amarillo" + setBrillo("amarillo")}
+            onClick={cambiarLuzAmarilla}
+          ></div>
+          <div
+            className={"verde" + setBrillo("verde")}
+            onClick={cambiarLuzVerde}
+          ></div>
+          <div
+            className={"morado" + setBrillo("morado")}
+            onClick={cambiarLuzMorado}
+          ></div> 
+        </div>
+        )}
       <button className="btn btn-secondary my-5" onClick={agregarLuzMorada}>
-        Agregar luz morada
+        Agregar/Quitar luz morada
       </button>
       <button className="btn btn-primary my-5" onClick={encenderSemaforo}>
         Encender o Apagar el Semaforo
