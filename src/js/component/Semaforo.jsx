@@ -12,8 +12,8 @@ const Semaforo = () => {
 
   const [mostrarMorado, setMostrarMorado] = useState(false);
 
-  const colores = ["rojo", "amarillo", "verde"];
-
+  //necesito el useState de colores porque si no, nunca se va a enterar de que se le agrego uno mas
+  const [colores, setColores] = useState(["rojo","amarillo","verde"]);
 
   const cambiarLuzRoja = () => {
     if(color !== "rojo")
@@ -78,13 +78,16 @@ const Semaforo = () => {
 
 
   const agregarLuzMorada = ()=>{
-    if (!mostrarMorado){
-      colores.push["morado"];
-      //setEncendido(true);
+    if ((!mostrarMorado) && (colores.length == 3)){
+      setColores(colores.concat("morado"));
       setMostrarMorado(true);
-    }else setMostrarMorado(false);
+    }else
+      { 
+        setMostrarMorado(false);
+        colores.length--;
+      }
   }
-  
+
   return (
     <div className="container">
       { !mostrarMorado ? (<div className="caja d-flex mt-5">
@@ -120,10 +123,10 @@ const Semaforo = () => {
           ></div> 
         </div>
         )}
-      <button className="btn btn-secondary my-5" onClick={agregarLuzMorada}>
+      <button className="btn btn-secondary my-5 me-2" onClick={agregarLuzMorada}>
         Agregar/Quitar luz morada
       </button>
-      <button className="btn btn-primary my-5" onClick={encenderSemaforo}>
+      <button className="btn btn-primary my-5 ms-2" onClick={encenderSemaforo}>
         Encender o Apagar el Semaforo
       </button>
     </div>
